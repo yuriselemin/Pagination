@@ -1,0 +1,49 @@
+{% load static %}
+
+<style>
+
+    .pagination {
+        display: inline-block;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        border: 1px solid #ddd;
+        margin: 50em 0 0 0
+    }
+
+    .pagination a.active {
+        background-color: #6d6e71;
+        color: white;
+        border: 1px solid #6d6e71;
+        padding: 0.5em 0.5em 0.5em
+
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+    }
+</style>
+
+<div class="pagination">
+    {% if page_posts.has_previous %}
+        <a href="?page=1">&laquo; First</a>
+        <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for page in page_posts.paginator.page_range %}
+        {% if page_posts.number == page %}
+            <a class="active" href="?page={{ page }}">{{ page }}</a>
+        {% else %}
+            <a href="?page={{ page }}">{{ page }}</a>
+        {% endif %}
+    {% endfor %}
+
+    {% if page_posts.has_next %}
+        <a href="?page={{ page_posts.next_page_number }}">Next</a>
+        <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
+    {% endif %}
+</div>
