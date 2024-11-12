@@ -1,86 +1,89 @@
 {% load static %}
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: auto;
+            padding: 0;
+        }
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f5f5f5;
-        margin: 0;
-        padding: 0;
-    }
+        h1 {
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        }
 
-    h1 {
-        color: #333;
-        text-align: center;
-    }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
 
-    li {
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #f5f5f5;
-    }
+        .pagination {
+            text-align: center;
+        }
 
-    .pagination {
-        text-align: center;
-    }
+        .pagination ul {
+            display: inline-block;
+        }
 
-    .pagination ul {
-        display: inline-block;
-    }
+        .pagination li {
+            display: inline;
+            margin: 0 5px;
+            background-color: transparent;
+        }
 
-    .pagination {
-        display: inline-block;
-    }
+        .pagination a {
+            color: #337ab7;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            border: 1px solid #ddd;
+        }
 
-    .pagination li {
-        display: inline;
-        margin: 0 5px;
-        background-color: transparent;
-    }
+        .pagination a.active {
+            background-color: #6d6e71;
+            font-weight: bold;
+            color: white;
+            border: 1px solid #6d6e71;
+            padding: 0.5em 0.5em 0.5em;
+            margin: 50em 0;
+        }
 
-    .pagination a {
-        color: #337ab7;
-        float: left;
-        padding: 8px 16px;
-        text-decoration: none;
-        border: 1px solid #ddd;
-        margin: 50em 0 0 0
-    }
+        .pagination a:hover:not(.active) {
+            color: #23527c;
+        }
+    </style>
+</head>
 
-    .pagination a.active {
-        background-color: #6d6e71;
-        font-weight: bold;
-        color: white;
-        border: 1px solid #6d6e71;
-        padding: 0.5em 0.5em 0.5em
-
-    }
-
-    .pagination a:hover:not(.active) {
-        color: #23527c;
-    }
-</style>
-
-<div class="pagination">
-    {% if page_posts.has_previous %}
-        <a href="?page=1">&laquo; First</a>
-        <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
-    {% endif %}
-
-    {% for page in page_posts.paginator.page_range %}
-        {% if page_posts.number == page %}
-            <a class="active" href="?page={{ page }}">{{ page }}</a>
-        {% else %}
-            <a href="?page={{ page }}">{{ page }}</a>
+<body>
+    <div class="pagination">
+        {% if page_posts.has_previous %}
+            <a href="?page=1">&laquo; First</a>
+            <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
         {% endif %}
-    {% endfor %}
 
-    {% if page_posts.has_next %}
-        <a href="?page={{ page_posts.next_page_number }}">Next</a>
-        <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
-    {% endif %}
-</div>
+        {% for page in page_posts.paginator.page_range %}
+            {% if page_posts.number == page %}
+                <a class="active" href="?page={{ page }}">{{ page }}</a>
+            {% else %}
+                <a href="?page={{ page }}">{{ page }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_posts.has_next %}
+            <a href="?page={{ page_posts.next_page_number }}">Next</a>
+            <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </div>
+</body>
