@@ -112,3 +112,6 @@ def page5(request):
 
     return render(request, 'blog/page5.html',
                                 {'page_posts': page_posts, 'items_per_page': items_per_page})
+
+
+
