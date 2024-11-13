@@ -63,6 +63,28 @@
         .pagination a:hover:not(.active) {
             color: #23527c;
         }
+
+        .desired-page {
+             background-color: #6d6e71;
+             font-weight: bold;
+             color: white;
+             border: 1px solid #6d6e71;
+             padding: 0.5em 0.5em 0.5em;
+             margin: 45em 0;
+        }
+
+<!--        .body_post {-->
+<!--            width: 100%;-->
+<!--            min-height: 100vh;-->
+<!--            box-sizing: border-box;-->
+<!--            padding-bottom: 30em;-->
+<!--            background-color: #ff00ff;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--        }-->
+
+
     </style>
 </head>
 
@@ -82,6 +104,7 @@
                 <a href="?page={{ page_num }}">{{ page_num }}</a>
             {% endif %}
         {% endfor %}
+
 
         <!-- Следующая страница -->
         {% if page_posts.has_next %}
