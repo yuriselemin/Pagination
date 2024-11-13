@@ -69,24 +69,23 @@
 <body>
     <div class="pagination">
         <!-- Предыдущая страница -->
+
         {% if page_posts.has_previous %}
-            <a href="?page=1" class="first">« First</a>
             <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
         {% endif %}
 
         <!-- Нумерация страниц -->
-        {% for page in page_posts.paginator.page_range %}
-            {% if page_posts.number == page %}
-                <span class="current-page">{{ page }}</span>
+        {% for page_num in page_posts.paginator.page_range %}
+            {% if page_num == page_posts.number %}
+                <span class="current-page">{{ page_num }}</span>
             {% else %}
-                <a href="?page={{ page }}">{{ page }}</a>
+                <a href="?page={{ page_num }}">{{ page_num }}</a>
             {% endif %}
         {% endfor %}
 
         <!-- Следующая страница -->
         {% if page_posts.has_next %}
             <a href="?page={{ page_posts.next_page_number }}">Next</a>
-            <a href="?page={{ page_posts.paginator.num_pages }}" class="last">Last »</a>
         {% endif %}
     </div>
 </body>
