@@ -4,7 +4,7 @@
 <head>
 
         <meta charset="UTF-8">
-        <title></title>
+        <title>Страница1</title>
 
 </head>
 <body>
@@ -34,24 +34,17 @@
         </ul>
 
         <!-- показываем пагинатор -->
-        <div class="pagination">
-            <p>Страницы:</p>
-            <ul>
-                {% if page_posts.has_previous %}
-
-                    <li><a href="?page=1"><<</a></li>
-
-                    <li><a href="?page={{ page_posts.previous_page_number }}">Previous</a></li>
-                {% endif %}
-                <li>{{ page_posts.number }}/{{ paginator.num_pages }}</li>
-                {% if page_posts.has_next %}
-                    <li><a href="?page={{ page_posts.next_page_number }}">Next</a></li>
-                    <li><a href="?page={{ paginator.num_pages }}">>>></a></li>
-                {% endif %}
-            </ul>
-        </div>
-        {% include 'blog/pagination.html' with page_posts=page_posts %}
-    {% endblock %}
+    <div class="pagination">
+        <p>Страницы:</p>
+        <ul>
+            <li><a href="{% url 'post_list' %}">1</a></li>
+            <li><a href="{% url 'page2' %}">2</a></li>
+            <li><a href="{% url 'page3' %}">Next</a></li>
+            <li><a href="{% url 'page5' %}">>>></a></li>
+        </ul>
+    </div>
+{% include 'blog/pagination.html' with page_posts=page_posts %}
+{% endblock %}
 
 </body>
 </html>
