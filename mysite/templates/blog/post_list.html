@@ -3,23 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <style>
 
-    </style>
+    <form method="GET">
+        {{ form.items_per_page.label }}
+        {{ form.items_per_page }}
+    </form>
 </head>
 <body>
     {% block content %}
-        <form method="GET">
-            <label for="items_per_page">Элементов на странице:</label>
-            <select id="items_per_page" name="items_per_page" onchange="this.form.submit()">
-                <option value="5" {% if items_per_page == 5 %}selected{% endif %}>5</option>
-                <option value="10" {% if items_per_page == 10 %}selected{% endif %}>10</option>
-                <option value="20" {% if items_per_page == 20 %}selected{% endif %}>20</option>
-
-            </select>
-        </form>
-
-        <h1>Список постов</h1>
+        <h1>-- Список постов --</h1>
         <ul>
             {% for post in page_posts %}
                 <li>
@@ -31,45 +23,43 @@
             {% endfor %}
         </ul>
 
-        <div class="body_post">
-
-        </div>
-
-
         <div class="pagination">
             <p>Страницы:</p>
             <ul>
-                <li><a href="{% url 'post_list' %}">1</a></li>
-                <li><a href="{% url 'page2' %}">Next</a></li>
-                <li><a href="{% url 'page5' %}">>>></a></li>
             </ul>
-
         </div>
 
-
-        {% include 'blog/pagination.html' with page_posts=page_posts %}
+        {% include 'blog/style.html' with page_posts=page_posts %}
     {% endblock %}
 
     <div class="pagination">
-        <!-- Предыдущая страница -->
 
-        {% if page_posts.has_previous %}
-            <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
-        {% endif %}
+
+
 
         <!-- Нумерация страниц -->
         {% for page_num in page_posts.paginator.page_range %}
-            {% if page_num == page_posts.number %}
-                <span class="current-page">{{ page_num }}</span>
+            {% if page_posts.number == page_num %}
+                <span class="current-page"></span>
             {% else %}
-                <a href="?page={{ page_num }}">{{ page_num }}</a>
+                <ul>
+                    <a href="?page={{ page_num }}">{{ page_num }}</a>
+                </ul>
             {% endif %}
         {% endfor %}
 
+               <!-- Предыдущая страница -->
+        {% if page_posts.has_previous %}
+            <ul>
+                <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
+            </ul>
+        {% endif %}
 
         <!-- Следующая страница -->
         {% if page_posts.has_next %}
-            <a href="?page={{ page_posts.next_page_number }}">Next</a>
+            <ul>
+                <a href="?page={{ page_posts.next_page_number }}">Next</a>
+            </ul>
         {% endif %}
     </div>
 </body>
