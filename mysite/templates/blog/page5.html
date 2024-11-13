@@ -1,0 +1,32 @@
+<!-- page2.html -->
+{% extends 'post_list.html' %}
+
+{% block title %}Список постов (Страница 2){% endblock %}
+
+{% block content %}
+    <!-- Your content here -->
+    <h1>Список постов (Страница 5)</h1>
+    <!-- Repeat the post list with your posts -->
+           <ul>
+            {% for post in page_posts %}
+                <li>
+                    {{ post.title }} ({{ post.created_at }})
+                    <p>{{ post.content }}</p>
+                </li>
+            {% empty %}
+                <p>Нет постов.</p>
+            {% endfor %}
+        </ul>
+
+    <!-- Update the pagination links -->
+    <div class="pagination">
+        <p>Страницы:</p>
+        <ul>
+                <li><a href="post_list.html">1</a></li>
+                <li><a href="page2.html">2</a></li>
+                <li><a href="page3.html">3</a></li>
+                <li><a href="page4.html">4</a></li>
+                <li><a href="page5.html">5</a></li>
+        </ul>
+    </div>
+{% endblock %}
