@@ -10,12 +10,12 @@
                 <option value="5" {% if items_per_page == 5 %}selected{% endif %}>5</option>
                 <option value="10" {% if items_per_page == 10 %}selected{% endif %}>10</option>
                 <option value="20" {% if items_per_page == 20 %}selected{% endif %}>20</option>
-                <!-- Add more options as needed -->
+
             </select>
         </form>
-    <!-- Your content here -->
+
     <h1>Список постов (Страница 4)</h1>
-    <!-- Repeat the post list with your posts -->
+
            <ul>
             {% for post in page_posts %}
                 <li>
@@ -27,9 +27,9 @@
             {% endfor %}
         </ul>
         <div class="body_post">
-            <!-- Add any additional content within the body_post div -->
+
         </div>
-    <!-- Update the pagination links -->
+
     <div class="pagination">
         <p>Страницы:</p>
         <ul>
