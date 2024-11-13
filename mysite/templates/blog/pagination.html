@@ -68,22 +68,25 @@
 
 <body>
     <div class="pagination">
+        <!-- Предыдущая страница -->
         {% if page_posts.has_previous %}
-            <a href="?page=1">&laquo; First</a>
+            <a href="?page=1" class="first">« First</a>
             <a href="?page={{ page_posts.previous_page_number }}">Previous</a>
         {% endif %}
 
+        <!-- Нумерация страниц -->
         {% for page in page_posts.paginator.page_range %}
             {% if page_posts.number == page %}
-                <a class="active" href="?page={{ page }}">{{ page }}</a>
+                <span class="current-page">{{ page }}</span>
             {% else %}
                 <a href="?page={{ page }}">{{ page }}</a>
             {% endif %}
         {% endfor %}
 
+        <!-- Следующая страница -->
         {% if page_posts.has_next %}
             <a href="?page={{ page_posts.next_page_number }}">Next</a>
-            <a href="?page={{ page_posts.paginator.num_pages }}">Last &raquo;</a>
+            <a href="?page={{ page_posts.paginator.num_pages }}" class="last">Last »</a>
         {% endif %}
     </div>
 </body>

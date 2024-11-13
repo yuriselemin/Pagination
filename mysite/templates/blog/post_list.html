@@ -4,13 +4,12 @@
 <head>
 
         <meta charset="UTF-8">
-        <title>Страница1</title>
+        <title></title>
 
 </head>
 <body>
-        {% block content %}
+{% block content %}
 
-<!--        {% include 'blog/pagination.html' with page_posts=page_posts %}-->
         <form method="GET">
             <label for="items_per_page">Элементов на странице:</label>
             <select id="items_per_page" name="items_per_page" onchange="this.form.submit()">
@@ -22,16 +21,16 @@
         </form>
 
         <h1>Список постов</h1>
-        <ul>
-            {% for post in page_posts %}
-                <li>
-                    {{ post.title }} ({{ post.created_at }})
-                    <p>{{ post.content }}</p>
-                </li>
-            {% empty %}
-                <p>Нет постов.</p>
-            {% endfor %}
-        </ul>
+            <ul>
+                {% for post in page_posts %}
+                    <li>
+                        {{ post.title }} ({{ post.created_at }})
+                        <p>{{ post.content }}</p>
+                    </li>
+                {% empty %}
+                    <p>Нет постов.</p>
+                {% endfor %}
+            </ul>
 
         <!-- показываем пагинатор -->
     <div class="pagination">
