@@ -4,7 +4,7 @@ from .forms import ItemsPerPageForm
 from .models import Post
 
 def post_list(request):
-    items_per_page = request.GET.get('items_per_page', '10')
+    items_per_page = request.GET.get('items_per_page', '3')
     form = ItemsPerPageForm(request.GET or None)
 
     if form.is_valid():
