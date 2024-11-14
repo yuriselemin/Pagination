@@ -15,7 +15,7 @@
         <ul>
             {% for post in page_posts %}
                 <li>
-                    {{ post.title }} ({{ post.created_at }})
+                    <strong>{{ post.title }}</strong> ({{ post.created_at }})
                     <p>{{ post.content }}</p>
                 </li>
             {% empty %}
