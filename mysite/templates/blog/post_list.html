@@ -33,8 +33,7 @@
     {% endblock %}
 
     <div class="pagination">
-
-                       <!-- Предыдущая страница -->
+        <!-- Предыдущая страница -->
         {% if page_posts.has_previous %}
             <ul>
                 <a href="?page={{ page_posts.previous_page_number }}">Назад</a>
@@ -44,15 +43,11 @@
         <!-- Нумерация страниц -->
         {% for page_num in page_posts.paginator.page_range %}
             {% if page_posts.number == page_num %}
-                <span class="current-page"></span>
+                <li class="current-page"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
             {% else %}
-                <ul>
-                    <a href="?page={{ page_num }}">{{ page_num }}</a>
-                </ul>
+                <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
             {% endif %}
         {% endfor %}
-
-
 
         <!-- Следующая страница -->
         {% if page_posts.has_next %}
